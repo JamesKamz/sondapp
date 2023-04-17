@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Liste des questions</h1>
+  <ul>
+    {% for question in questions %}
+    <a href="{% url 'detail' pk=question.pk %}">
+      <li>{{ question.question_text }} - {{ choix.nombre_de_votes.count}} vote(s)</li>
+    </a>
+    {% empty %}
+      <li>Pas de questions pour l'instant.</li>
+    {% endfor %}
+  </ul>
+  
+{% endblock %}

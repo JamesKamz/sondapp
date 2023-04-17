@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Liste des questions</h2>
+{% if questions %}
+<ul>
+  {% for question in questions %}
+  <li>
+    <a href="{% url 'detail' pk=question.pk %}">{{ question.question_text }}</a>
+    <span class="text-muted">par {{ question.user.username }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Aucune question disponible.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <head>
+    <title>{{question.question_text}}</title>
+  </head>
+  <body>
+    <h2><strong>Faire votre choix</strong></h2>
+    <h3>{{question.question_text}}</h3>
+
+    <form method="POST" action=" {% url 'result' question.pk %} ">
+        {% csrf_token %}
+    <ul class="list-group" style="margin:0px">
+        {% for choix_texte in options %}
+        
+        <label>
+            <li class="list-group-item">
+                <input class="form-check-input me-1" type="radio" name = 'choix' value="{{choix_texte.pk}}" aria-label="...">
+                {{choix_texte.choix_texte}}
+              </li>
+        </label>
+        {% endfor %}
+    
+        
+    </ul>
+    <input type="submit" value = "Submit" class = 'btn btn-primary'>
+    </form>
+    <br><br>
+<a href="{% url 'questionlist' %}">Retour</a>
+  </body>
+{% endblock content %}

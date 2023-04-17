@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3><span>{{question.question_text}} Supprimée avec Succès</span></h3>
+<a href="{% url 'dashboard' %}">Retour au tableau de bord</a>
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Supprimer la question "{{ question.question_text }}"</h1>
+  <form method="post" action="{% url 'success' pk=question.pk %}">
+    {% csrf_token %}
+    <p>Êtes-vous sûr de vouloir supprimer cette question ?</p>
+    <button type="submit" class='btn btn-primary'>Supprimer</button>
+    <a href="{% url 'home' %}">Annuler</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Bienvenue, {{ user.username }}</h1>
+  <h2>Mes questions</h2>
+  <ul>
+    {% for question in questions %}
+    <a href="{% url 'delete_question' pk=question.pk %}">
+      <li>{{ question.question_text }} - {{ question.nombre_de_votes.count }} vote(s)</li>
+    </a>
+    {% empty %}
+      <li>Pas de questions pour l'instant.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'add_question' %}">Ajouter une question</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2><strong>Résultats</strong></h2>
+
+<h3>{{question.question_text}}</h3>
+
+<ul class="list-group">
+{% for choix_texte in options %}
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    {{choix_texte.choix_texte}}
+    <span class="badge bg-primary rounded-pill">{{choix_texte.nombre_de_votes}}%</span>
+  </li>
+  {% endfor %}
+
+
+  
+</ul>
+{% endblock content %}

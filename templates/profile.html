@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Profil de {{ user.username }}</h1>
+  <ul>
+    <li>Nom d'utilisateur : {{ user.username }}</li>
+    <li>Adresse e-mail : {{ user.email }}</li>
+    <li>Date d'inscription : {{ user.date_joined|date }}</li>
+  </ul>
+{% endblock %}
