@@ -11,6 +11,9 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ['question_text', 'choice1', 'choice2', 'choice3', 'choice4' ]
+        widgets = {
+            'user': forms.HiddenInput(),  # Hide the user field in the form
+        }
 
     choice1 = forms.CharField(max_length=100)
     choice2 = forms.CharField(max_length=100)
@@ -30,8 +33,8 @@ class QuestionForm(forms.ModelForm):
         return cleaned_data
 
     def save(self, commit=False):
-        instance = super().save(commit=True)
-
+        instance = super().save(commit=False)
+        instance.user = self.current_user
         if commit:
             instance.save()
 

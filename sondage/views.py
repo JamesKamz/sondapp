@@ -50,12 +50,12 @@ def add_question(request):
     if request.method == 'POST':
         form = QuestionForm(request.POST)
         if form.is_valid():
-            question = form.save(commit=False)
-            question.user = request.user
-            question.save()
+            form.current_user = request.user
+            question = form.save(commit=True)
             return redirect('home')
     else:
         form = QuestionForm()
+        form.current_user = request.user
     return render(request, 'add_question.html', {'form': form})
 
 def question_list(request):
